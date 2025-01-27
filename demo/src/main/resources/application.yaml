@@ -1,0 +1,19 @@
+server:
+    port: 8080
+
+spring:
+    datasource:
+        url: jdbc:postgresql://localhost:5432/dbsite
+        username: postgres
+        password: root
+        driver-class-name: org.postgresql.Driver
+    
+    jpa:
+        hibernate:
+            ddl-auto: create-drop
+        
+    sql:
+        init:
+            schema-locations: classpath:/schema-postgresql.sql
+            mode: always
+            platform: postgres
