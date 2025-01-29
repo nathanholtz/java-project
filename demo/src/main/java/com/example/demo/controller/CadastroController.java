@@ -1,6 +1,9 @@
 package com.example.demo.controller;
 
 import org.springframework.context.ApplicationContext;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,7 +24,7 @@ public class CadastroController {
     @GetMapping("/")
     public String homeListagem(Model model){
         ClienteService cs = context.getBean(ClienteService.class);
-        List<Cliente> clis = cs.obterClientes();
+        List<Cliente> clis = cs.obterCLientes();
         model.addAttribute("clientes", clis);
         return "home";
     }
