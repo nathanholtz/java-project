@@ -16,4 +16,12 @@ public class ClienteService {
     public List<Cliente> obterCLientes(){
         return cdao.obterCLientes();
     }
+
+    public Cliente pegarCliente(int id){
+        return cdao.pegarCliente(id);
+    }
+
+    public void atualizarCliente(int id, Cliente novo){
+        cdao.atualizarCliente(id, novo);
+    }
 }

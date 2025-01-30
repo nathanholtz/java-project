@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -47,5 +48,30 @@ public class ClienteDAO {
          aux.add(converter(reg));
       }
       return aux;
+   }
+
+
+   @SuppressWarnings("deprecation")
+   public Cliente pegarCliente(int id) {
+    String sql = "SELECT * FROM cliente WHERE id = ?";
+
+    try {
+        return jbdc.queryForObject(sql, new Object[]{id}, (rs, rowNum) -> {
+            Cliente cliente = new Cliente();
+            cliente.setId(rs.getInt("id"));
+            cliente.setNome(rs.getString("nome"));
+            cliente.setEmail(rs.getString("email"));
+            return cliente;
+        });
+    } catch (EmptyResultDataAccessException e) {
+        
+        return null; 
+    }
+}
+
+   public void atualizarCliente(int id, Cliente novo){
+      String sql = "UPDATE cliente SET nome = ?, email = ? WHERE id = ?";
+
+      jbdc.update(sql, novo.getNome(), novo.getEmail(), id);
    }
 }

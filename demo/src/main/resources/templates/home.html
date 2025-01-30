@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,7 +21,7 @@
                 <td th:text="${cliente.id}"></td>
                 <td th:text="${cliente.nome}"></td>
                 <td th:text="${cliente.email}"></td>
-                <td><a href="@{/atualizar/ + ${cliente.id}}">Editar</a></td>
+                <td><a th:href="@{/atualizar/{id}(id=${cliente.id})}">Editar</a></td>
                 <td>
                     <form method="post" th:action="@{/deletar/{id}(id=${cliente.id})}"> 
                         <input type="submit" value="Deletar">

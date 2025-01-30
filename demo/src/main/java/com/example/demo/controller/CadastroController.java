@@ -9,10 +9,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.model.Cliente;
 import com.example.demo.model.ClienteService;
+
+
 
 
 
@@ -42,6 +45,22 @@ public class CadastroController {
         ClienteService cs = context.getBean(ClienteService.class);
         cs.inserirCliente(c);
         return "sucesso";
+    }
+
+    @GetMapping("/atualizar/{id}")
+public String atualizar(Model model, @PathVariable("id") int id) {
+    ClienteService cs = context.getBean(ClienteService.class);
+    Cliente antigo = cs.pegarCliente(id); 
+    model.addAttribute("cliente", antigo); 
+    return "atualizar"; 
+}
+
+    @PostMapping("/atualizar/{id}") 
+    public String atualizarCliente(@ModelAttribute Cliente cli, @PathVariable("id") int id){
+        ClienteService cs = context.getBean(ClienteService.class);
+
+        cs.atualizarCliente(id, cli);
+        return "redirect:/";
     }
 
 }
