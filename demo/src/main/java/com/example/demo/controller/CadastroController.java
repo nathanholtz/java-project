@@ -63,4 +63,14 @@ public String atualizar(Model model, @PathVariable("id") int id) {
         return "redirect:/";
     }
 
+    @PostMapping("/deletar/{id}")
+    public String deletarCliente(@PathVariable("id") int id){
+
+        ClienteService cs = context.getBean(ClienteService.class);
+
+        cs.deletarCliente(id);
+
+        return "redirect:/";
+    }
+
 }

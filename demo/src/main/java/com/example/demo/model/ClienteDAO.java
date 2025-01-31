@@ -74,4 +74,9 @@ public class ClienteDAO {
 
       jbdc.update(sql, novo.getNome(), novo.getEmail(), id);
    }
+
+   public void deletarCliente(int id){
+      String sql = "DELETE FROM cliente WHERE id = ?";
+      jbdc.update(sql,id);
+   }
 }

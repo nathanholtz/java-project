@@ -24,4 +24,8 @@ public class ClienteService {
     public void atualizarCliente(int id, Cliente novo){
         cdao.atualizarCliente(id, novo);
     }
+
+    public void deletarCliente(int id){
+        cdao.deletarCliente(id);
+    }
 }
