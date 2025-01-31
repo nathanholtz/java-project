@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Atualizar Cliente</title>
+    <link rel="stylesheet" href="" th:href="@{/css/styles.css}"/>
 </head>
 <body>
     <h1>Atualizar Cliente</h1>
@@ -10,5 +11,7 @@
         Email: <input type="text" name="email" th:field="*{email}"> <br>
         <input type="submit" value="Atualizar">
     </form>
+
+    <a href="/">voltar para o menu</a>
 </body>
 </html>

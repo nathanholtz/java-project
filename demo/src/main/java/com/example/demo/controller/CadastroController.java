@@ -44,7 +44,7 @@ public class CadastroController {
 
         ClienteService cs = context.getBean(ClienteService.class);
         cs.inserirCliente(c);
-        return "sucesso";
+        return "redirect:/";
     }
 
     @GetMapping("/atualizar/{id}")
